@@ -1,8 +1,8 @@
 class ArtworksController < ApplicationController 
     def index
-    artworks = Artwork.all
-    render json: artworks
-  end
+      user = User.find(params[:user_id])
+      render json: all_artworks(user)
+    end
   
   def create
     artwork = Artwork.new(artwork_params)
@@ -38,4 +38,8 @@ class ArtworksController < ApplicationController
   def artwork_params
         params.require(:artwork).permit(:title)
     end
-  end 
+
+    def all_artworks(user)
+      { all_artworks: { my_artworks: user.artworks, shared_with_me: user.shared_artworks } }
+    end
+end 
