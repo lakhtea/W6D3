@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   def index
+    if params[:q] LIKE "?%=%"
     users = User.all
     render json: users
+
   end
   
   def create

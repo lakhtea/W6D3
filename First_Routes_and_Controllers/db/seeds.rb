@@ -25,5 +25,11 @@ ArtworkShare.create(artwork_id: 3, viewer_id: 5)
 ArtworkShare.create(artwork_id: 4, viewer_id: 2)
 ArtworkShare.create(artwork_id: 5, viewer_id: 1)
 
+Comment.create(commenter_id: 1, artwork_id: 2, body: "Nice painting")
+Comment.create(commenter_id: 2, artwork_id: 4, body: "Nice drawing")
+Comment.create(commenter_id: 3, artwork_id: 5, body: "beautiful")
+Comment.create(commenter_id: 5, artwork_id: 1, body: "Gorgeous")
+Comment.create(commenter_id: 4, artwork_id: 1, body: "Life changing")
+
 
 

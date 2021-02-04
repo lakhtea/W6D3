@@ -2,10 +2,16 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users do
     resources :artworks
+    resources :comments
   end
-  resources :artworks
+  
+  resources :artworks do
+    resources :comments
+  end
 
   resources :artwork_shares
+
+  
   # get 'users', to: 'users#index'
   # get 'users/:id', to: 'users#show', as: 'user'
   # post 'users/:id', to: 'users#create'
