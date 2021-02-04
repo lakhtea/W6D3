@@ -6,8 +6,11 @@ class UsersController < ApplicationController
   
   def create
     user = User.new(user_params)
-    user.save!
-    render json: user
+    if user.save(user_params)
+      render json: user
+    else
+      render json: user.errors.full_messages, status: 422
+    end
   end
 
   def show
@@ -27,10 +30,13 @@ class UsersController < ApplicationController
   def destroy
   user = User.find(params[:id])
   user.destroy
+  render json: user
 #   redirect_to user_url
   end
+  private
 
   def user_params
-        params.require(:user).permit(:name, :email)
-    end
-end
+        params.require(:user).permit(:username)
+  end
+end 
+
